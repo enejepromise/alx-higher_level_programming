@@ -1,3 +1,3 @@
 #!/usr/bin/node
 let = myVar;
-console.log ( 'myVar' );
+console.log (myVar);
