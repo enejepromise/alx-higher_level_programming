@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-
 """
-This is a module script that 
-lists all states with a name starting with N
+this module contains a
+script that lists all states
+with a name starting with N
 """
 import sys
 import MySQLdb
@@ -10,27 +10,25 @@ import MySQLdb
 if __name__ == "__main__":
     try:
         db = MySQLdb.connect(
-                port = 3306,
-                host = "localhost"
-                username = sys.argv[1],
-                passwd = sys.argv[2],
-                db = sys.argv[3])
+                    port=3306,
+                    host="localhost",
+                    user=sys.argv[1],
+                    passwd=sys.argv[2],
+                    db=sys.argv[3]
+        )
         cur = db.cursor()
+
         cur.execute("SELECT * FROM states\
                      WHERE name LIKE BINARY 'N%'\
                      ORDER BY id ASC")
         states = cur.fetchall()
 
-        db = fetchall()
-        
         for row in states:
             print(row)
-    
-    except MySQLdb.Error, e:
+
+    except MySQLdb.Error as e:
         print(f"Error connecting to MySQL: {e}")
 
     finally:
-
-    cur.close()
-    db.close()
-
+        cur.close()
+        db.close()
