@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 """
-This is a module script that lists all states with a name starting with N (upper N) 
-from the database hbtn_0e_0_usa
+This is a module script that 
+lists all states with a name starting with N
 """
 import sys
 import MySQLdb
@@ -23,11 +23,13 @@ if __name__ == "__main__":
 
         db = fetchall()
         
-        for name in states:
-            print(name)
+        for row in states:
+            print(row)
     
     except MySQLdb.Error, e:
         print(f"Error connecting to MySQL: {e}")
+
+    finally:
 
     cur.close()
     db.close()
